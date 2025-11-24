@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madison Lisle - Software Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --burgundy: #4a1a2c;
+            --cream: #f4f1e8;
+            --sage: #8b9f7f;
+            --terracotta: #d4693b;
+            --navy: #2c3e50;
+            --gold: #d4a373;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: var(--cream);
+            color: var(--burgundy);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(165deg, var(--burgundy) 0%, #6b2d42 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 2rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(212, 163, 115, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(139, 159, 127, 0.1) 0%, transparent 50%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .name {
+            font-size: clamp(3rem, 10vw, 8rem);
+            font-weight: 300;
+            letter-spacing: -0.03em;
+            color: var(--cream);
+            margin-bottom: 1rem;
+            line-height: 0.9;
+        }
+
+        .tagline {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            color: var(--gold);
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .location {
+            font-size: 1.1rem;
+            color: rgba(244, 241, 232, 0.7);
+            font-family: 'Courier New', monospace;
+        }
+
+        .contact-bar {
+            margin-top: 3rem;
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-bar a {
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 0.95rem;
+            border-bottom: 1px solid rgba(244, 241, 232, 0.3);
+            padding-bottom: 2px;
+            transition: border-color 0.3s;
+        }
+
+        .contact-bar a:hover {
+            border-bottom-color: var(--gold);
+        }
+
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 3rem;
+            font-weight: 300;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60%;
+            height: 3px;
+            background: var(--terracotta);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .skills-block {
+            background: var(--burgundy);
+            color: var(--cream);
+            padding: 2.5rem;
+            border-radius: 2px;
+        }
+
+        .skills-block h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--gold);
+            font-weight: 400;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .skill-tag {
+            background: rgba(244, 241, 232, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 2px;
+            font-size: 0.9rem;
+            font-family: 'Courier New', monospace;
+        }
+
+        .experience-section {
+            background: var(--navy);
+            color: var(--cream);
+            margin: 0;
+            max-width: 100%;
+            padding: 6rem 2rem;
+        }
+
+        .experience-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .job {
+            margin-bottom: 4rem;
+            padding-bottom: 4rem;
+            border-bottom: 1px solid rgba(244, 241, 232, 0.2);
+        }
+
+        .job:last-child {
+            border-bottom: none;
+        }
+
+        .job-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .job-title {
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .company {
+            font-size: 1.2rem;
+            color: var(--sage);
+            margin-bottom: 0.3rem;
+        }
+
+        .job-date {
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: rgba(244, 241, 232, 0.6);
+        }
+
+        .job-details {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .job-details li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+        }
+
+        .job-details li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--terracotta);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: white;
+            padding: 2.5rem;
+            border-left: 4px solid var(--terracotta);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .project-title {
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+            color: var(--burgundy);
+        }
+
+        .project-role {
+            font-size: 0.9rem;
+            color: var(--sage);
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .project-tech {
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            color: var(--terracotta);
+            margin-bottom: 1rem;
+        }
+
+        .project-description {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            color: var(--burgundy);
+            text-decoration: none;
+            font-size: 0.9rem;
+            border-bottom: 1px solid var(--burgundy);
+            padding-bottom: 2px;
+            transition: color 0.3s, border-color 0.3s;
+        }
+
+        .project-link:hover {
+            color: var(--terracotta);
+            border-color: var(--terracotta);
+        }
+
+        footer {
+            background: var(--burgundy);
+            color: var(--cream);
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-bar {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="name">Madison<br>Lisle</h1>
+            <p class="tagline">Software Engineer</p>
+            <p class="location">Sacramento, California</p>
+            <div class="contact-bar">
+                <a href="mailto:madisonxlisle@gmail.com">madisonxlisle@gmail.com</a>
+                <a href="https://linkedin.com/in/madisonlisle" target="_blank">LinkedIn</a>
+                <a href="https://github.com/Madmaxbeyond" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2 class="section-title">About</h2>
+        <div class="about-grid">
+            <div class="about-text">
+                <p>I'm an enthusiastic and creatively driven full-stack software engineer with 4 years of experience building and maintaining interactive, accessible, and responsive web and app features.</p>
+                <p style="margin-top: 1.5rem;">My focus areas include developing frontend components that scale with growing products, creative problem-solving, and writing code that supports well-designed user experiences. I thrive in remote team environments and bring clear, empathetic communication to every project.</p>
+            </div>
+            <div class="skills-block">
+                <h3>Technical Skills</h3>
+                <div class="skills-list">
+                    <span class="skill-tag">React</span>
+                    <span class="skill-tag">React Native</span>
+                    <span class="skill-tag">TypeScript</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">GraphQL</span>
+                    <span class="skill-tag">MongoDB</span>
+                    <span class="skill-tag">CSS/Sass</span>
+                    <span class="skill-tag">Redux</span>
+                    <span class="skill-tag">Zustand</span>
+                </div>
+                <h3>Professional Skills</h3>
+                <p>Building connections across remote teams • Interacting with diverse stakeholders • Clear and empathetic communication</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="experience-section">
+        <div class="experience-container">
+            <h2 class="section-title">Experience</h2>
+            
+            <div class="job">
+                <div class="job-header">
+                    <h3 class="job-title">Contract Web Developer</h3>
+                    <p class="company">Various Companies</p>
+                    <p class="job-date">Nov 2023 - Present</p>
+                </div>
+                <ul class="job-details">
+                    <li>Built, deployed, and maintained full-stack websites and web experiences</li>
+                    <li>Integrated third-party APIs and dynamically displayed retrieved data</li>
+                    <li>Translated Figma design mocks into responsive, scalable frontend components</li>
+                    <li>Built features for existing projects with JavaScript, CSS, HTML, PHP, and Vue.js</li>
+                    <li>Focused on accessibility with WCAG best practices and AA/AAA compliance</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <h3 class="job-title">Lead Web Developer</h3>
+                    <p class="company">Hard Refresh</p>
+                    <p class="job-date">Nov 2023 - Present</p>
+                </div>
+                <ul class="job-details">
+                    <li>Built, deployed, and maintained full-stack websites and web experiences</li>
+                    <li>Integrated third-party APIs with dynamic data presentation</li>
+                    <li>Translated design systems into production-ready components</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <h3 class="job-title">Web Developer & Designer</h3>
+                    <p class="company">Outback Solutions</p>
+                    <p class="job-date">Dec 2023 - Present</p>
+                </div>
+                <ul class="job-details">
+                    <li>Built, deployed, and maintained full-stack websites and web experiences</li>
+                    <li>Built features for new and existing projects with CSS, HTML, and PHP</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <h3 class="job-title">Full Stack Software Engineer</h3>
+                    <p class="company">Volo Sports</p>
+                    <p class="job-date">May 2021 - June 2023</p>
+                </div>
+                <ul class="job-details">
+                    <li>Built features for frontend and backend with JavaScript, TypeScript, Node.js, React, React Native, CSS/Sass, Elixir, MongoDB, and GraphQL</li>
+                    <li>Built workflows with GitHub Actions to improve team productivity</li>
+                    <li>Updated legacy React Recompose to React Hooks to improve performance</li>
+                    <li>Built an algorithm in JavaScript to recommend leagues to users based on app usage</li>
+                    <li>Collaborated with CTO, senior engineers, QA, mobile developers, and UX/UI designers</li>
+                    <li>Self-tested code and worked with CI/CD pipeline to ensure quality before production</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2 class="section-title">Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3 class="project-title">GreenThumb</h3>
+                <p class="project-role">Full Stack Developer</p>
+                <p class="project-tech">MongoDB • Express • React • Node.js</p>
+                <p class="project-description">Mobile-first MERN-stack app that schedules houseplants' next watering dates with a built-in countdown clock responding to specific watering frequency and last date watered.</p>
+                <div class="project-links">
+                    <a href="https://github.com/Madmaxbeyond/green-thumb" target="_blank" class="project-link">GitHub</a>
+                    <a href="https://green-thumb.megahirtz.run/" target="_blank" class="project-link">Live Site</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3 class="project-title">Style Collector</h3>
+                <p class="project-role">Full Stack Developer</p>
+                <p class="project-tech">Python • Django</p>
+                <p class="project-description">Closet organizer app that helps users track when they wore certain items and how they felt about each piece, encouraging mindful wardrobe management.</p>
+                <div class="project-links">
+                    <a href="https://github.com/Madmaxbeyond/stylecollector" target="_blank" class="project-link">GitHub</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3 class="project-title">inTouch</h3>
+                <p class="project-role">Backend & Server-side Developer</p>
+                <p class="project-tech">Python • Django • Twilio API</p>
+                <p class="project-description">Team communication app connecting remote teams through Twilio API integration. Collaborated with two developers on backend and server-side setup.</p>
+                <div class="project-links">
+                    <a href="https://github.com/Madmaxbeyond/intouch" target="_blank" class="project-link">GitHub</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3 class="project-title">Coffee Babe</h3>
+                <p class="project-role">Full Stack Developer</p>
+                <p class="project-tech">JavaScript • MongoDB • Express • Node.js</p>
+                <p class="project-description">Online diary of coffee recipes helping users track every facet of their brewing process, from bean selection to final pour.</p>
+                <div class="project-links">
+                    <a href="https://github.com/Madmaxbeyond/coffee-diary" target="_blank" class="project-link">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Designed and built by Madison Lisle • 2025</p>
+        <p style="margin-top: 1rem;"><a href="mailto:madisonxlisle@gmail.com">Get in touch</a></p>
+    </footer>
+</body>
+</html>
